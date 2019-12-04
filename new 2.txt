@@ -1,0 +1,27 @@
+ALTER TABLE t_park_info ADD street VARCHAR(128) DEFAULT "" COMMENT '所属街道'
+ALTER TABLE t_park_info ADD parkrange VARCHAR(16) DEFAULT "" COMMENT '泊位编号范围'
+ALTER TABLE t_park_info ADD largecar SMALLINT DEFAULT 0 COMMENT '是否支持大型车   默认为0 不支持    1 支持'
+ALTER TABLE t_park_info ADD parkshare SMALLINT DEFAULT 3 COMMENT '停车场预约共享  1 预约  2 共享   3 均不支持 '
+ALTER TABLE t_park_info ADD feetype SMALLINT DEFAULT 2 COMMENT '收费类型：1 免费 2 计时 3 计次 4 混合'
+ALTER TABLE t_park_info ADD feestyle SMALLINT DEFAULT 1 COMMENT '收费方式： 1 人工收费   2 电子收费 3 混合'
+
+ALTER TABLE t_park_region ADD ground_count INT DEFAULT 0 COMMENT '地面车位数';
+ALTER TABLE t_park_region ADD underground_count INT DEFAULT 0 COMMENT '底下车位数';
+ALTER TABLE t_park_region ADD dimensional_count INT DEFAULT 0 COMMENT '立体车库车位数';
+ALTER TABLE t_park_region ADD bigcar_count INT DEFAULT 0 COMMENT '大型车车位数';
+ALTER TABLE t_park_region ADD deformity_count INT DEFAULT 0 COMMENT '残疾人车位数';
+ALTER TABLE t_park_region ADD energy_count INT DEFAULT 0 COMMENT '新能源充电桩个数';
+
+ALTER TABLE t_park_expand ADD carnuit VARCHAR(32) DEFAULT "" COMMENT '停车场管理单位'
+ALTER TABLE t_park_expand ADD parklot SMALLINT DEFAULT 2 COMMENT '停车场性质： 1 临时 2 永久'
+ALTER TABLE t_park_expand ADD managesystem SMALLINT DEFAULT 0 COMMENT '是否建立停车场信息化管理系统 0 否  1 是'
+ALTER TABLE t_park_expand ADD linkother SMALLINT DEFAULT 0 COMMENT '停车场信息化管理系统接外网 0 否  1 是'
+ALTER TABLE t_park_expand ADD cityaccess SMALLINT DEFAULT 0 COMMENT '接入所在市（县）区停车管理平台 0 否  1 是'
+ALTER TABLE t_park_expand ADD stopsign SMALLINT DEFAULT 0 COMMENT '停车标识牌 0 否  1 是';
+ALTER TABLE t_park_expand ADD berth SMALLINT DEFAULT 0 COMMENT '泊位划线 0 否  1 是';
+ALTER TABLE t_park_expand ADD equipment SMALLINT DEFAULT 0 COMMENT '/收费设备 0 否  1 是';
+ALTER TABLE t_park_expand ADD announcement SMALLINT DEFAULT 0 COMMENT '/收费公示 0 否  1 是';
+ALTER TABLE t_park_expand ADD guidsign SMALLINT DEFAULT 0 COMMENT '/诱导标识 0 否  1 是';
+ALTER TABLE t_park_expand ADD watchhouse SMALLINT DEFAULT 0 COMMENT '/值班岗亭 0 否  1 是';
+ALTER TABLE t_park_expand ADD firefighting SMALLINT DEFAULT 0 COMMENT '/消防设备 0 否  1 是';
+ALTER TABLE t_park_expand ADD monitor SMALLINT DEFAULT 0 COMMENT '/监控设备 0 否  1 是';
