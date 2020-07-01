@@ -4,11 +4,11 @@ using namespace std;
 int main(void)
 {
 	string str;
-	cout<<"printf line to there[size<10]"<<endl;
+	cout<<"printf line to there"<<endl;
 	getline(cin,str);
 	cout<<str<<endl;
 	
-	cout<<"print word to there [size<10]"<<endl;
+	cout<<"print word to there "<<endl;
 	while(cin>>str && str[0]!='q')
 	{
 		cout<<str<<endl;
