@@ -1,0 +1,10 @@
+first:
+vector<T> name(10,42);
+
+second:
+vector<T> name(42,42,42,42,42,42,42,42,42,42);
+
+thired:
+vector<T> name;
+for(int i=0;i<10;i++)
+	name.push_back(42);
