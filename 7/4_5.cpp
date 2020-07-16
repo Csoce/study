@@ -3,6 +3,10 @@
 using namespace std;
 struct Person
 {
+friend istream& read(istream &is,Person & item);
+friend ostream& print(ostream &os,const Person & item);
+friend Person add(Person& hs1,Person& hs2);
+	public:
 	//构造函数
 	Person()=default;
 	Person(const string &str,const string &fhome,double pre):Name(str),family_Home(fhome),Homeprice(pre){}
@@ -11,9 +15,11 @@ struct Person
 	string& reFamily_home() {return family_Home;} 
 	double& reHomeprice() {return Homeprice;}	
 	//数据成员
+	private:	
 	string Name;
 	string family_Home;
 	double Homeprice;
+	mutable int count=0;//可变参数
 };
 istream& read(istream &is,Person & item)
 {
