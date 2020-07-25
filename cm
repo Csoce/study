@@ -1,0 +1,108 @@
+#!/bin/bash
+PATH=$PATH:~/bin
+# The Bash part :   Rename libpark*.so [1 ] || del FileNameLbm  [ 2 ] && up libppark*.so [ 3 ]
+
+# ***************************
+
+# [1]:plant file 
+# [2]:The Up System exist a Libpark*.so 
+# [3]:The down System exist a libpark*.so
+# Rename: fileName = ordName__Datetime
+#	eg: libparkt.so --->libparkt.so 2020-01-01-00:00:00
+
+# [4]:use right  way
+# [5]:first  way:  [Bash FeleName ]              
+#		on upload filename and shall rename Felename to  currert  Today's date dictrectory,The Name is filename spacer datetime
+
+# [6]:second way:  [Bash FeleName NewfileName]  OR Reverse
+#		on upload filename and shall rename Felename to  currert  Today's date dictrectory,The Name is NewfileName
+
+# [7]:third  way:  [Bash FeleName dictreoryName] OR Reverse
+#		on upload filename shall rename felename to dictreoryName  The Name is filename spacer datetime 
+
+# [8]:fourth way:  [Bash FeleName NewfileName dictreoryName] 
+#		on upload filename shall rename felename to dictreoryName,The Name is NewfileName 
+
+# [9]:The old libpark*.so move  date directory  and rename for DatefileName 
+
+# argument=("$@")				 # defalut $1 the oldname $2 the newname 
+# **************************
+
+directory=`date +%Y-%m-%d`	         # Create directory Name
+directoryNmae=`date +%Y-%m-%d-%H:%M:%S`  # Create file Name in directory 
+Spacer="..."                             # Create file Name and Date the Spacer 
+
+
+exist_name=0
+exist_DictrearyName=0
+oldname=" "
+newname=" "
+
+
+echo "$@, $directory,$directoryNmae"
+# check complate
+
+if [ "$#" -lt 1   ] || [ "$#"  -gt  3 ];
+then echo "Incomplete information" && exit 1 
+fi
+
+for  loop in "$@"
+do 
+	if   [ -e ${loop} ] &&  [ -f ${loop} ] ;
+		then  exist_name=`expr $exist_name + 1`
+	elif [ -e ${loop} ] &&  [ -d ${looop} ];
+		then echo "exitst"&&exist_DictrearyName=`expr $exist_DictrearyName+1` 
+	 fi
+ 
+done 
+
+if [ $exist_name == 0 ] ; 
+then echo "information Not included exist file." && exit 1 
+fi  
+
+if [ "$#" -eq 3 ] && [ $exist_DictrearyName =  0 ] && [ $exist_name = 0 ] ;
+then echo "informattion Not included exist distreory."&& exit 1	
+fi
+
+function Movedirectory()
+{
+	if [ -e $directory ] && [ -d $directory ];
+	then  
+		`mv $oldname $directory/$newname$Spacer$directoryNmae`	
+	else
+		`mkdir $directory`
+		`mv $oldname $directory/$newname$Spacer$directoryNmae`	
+	fi
+}
+
+oldname=$1
+newname=$oldname	
+
+if [ "$#" -eq 1 ];
+then 
+	Movedirectory
+
+elif [ "$#" -eq 2 ] && [ $exist_DictrearyName = 0 ] ;
+then 
+	if [ -f $1 ];
+	then 
+		newname=$2
+		Movedirectory
+	else
+		oldname=$2
+		newname=$1
+		Movedirectory
+	fi				
+else
+	if [ -f $1 ] ;
+	then 
+		directory=$3
+		newname=$2
+		oldname=$1
+		Movedirectory
+	else
+		echo "the argument error"&& exit  1
+	fi
+fi 
+
+
