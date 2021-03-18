@@ -1,17 +1,19 @@
 #include<iostream>
-#include<functional>
+#include<cstring>
+#include<string>
 using namespace std;
 
-template <typename T>
-int compare (const T & v1,const T & v2)
+
+
+template<unsigned N,unsigned M>
+int compare(const char (&p1) [N],const char (&p2)[M])
 {
-	if(less<T>()(v1,v2)) return 1;
-	if(less<T>()(v2,v1)) return -1;
-	return 0;
+	cout<<N<<" "<<M<<endl;
+	return strcmp(p1,p2);
 }
+
 int main(void)
 {
-	cout<<"3 - 2:"<<	compare(3,2)<<endl;
-	cout<<"2 - 3:"<<compare(2,3)<<endl;
+	cout<<compare("131","jlsjfl")<<endl;
 	return 0;
 }

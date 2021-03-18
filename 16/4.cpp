@@ -1,28 +1,31 @@
 #include<iostream>
+#include<string>
+
 #include<vector>
 #include<list>
-#include<string>
 using namespace std;
 
-	template<typename T,typename U>
-int finda(T &t,const U &u)
+
+
+template <typename T,typename U>
+int  fia(T &t,const U &u)
 {
-	for(auto i=t.begin();i!=t.end();++i)
+	for(auto a=t.begin();a!=t.end();++a)
 	{
-		if(*i==u)
-			return i-t.begin();
-		return 0;
+		cout<<"*a"<<*a <<" "<<u<<endl;
+		if(*a==u) return a-t.begin();
+		else if(a==t.end()) return -1;
 	}
-}
+} 
 int main(void)
 {
-	vector<int> p;
-	for(auto i=0;i<10;++i)
-		p.push_back(i);
-
-	int Q;
-	cin>>Q;
+	vector<string> q;
+	for(int i=0;i<10;++i)
+	{ 	q.push_back(to_string(i));cout<<i<<endl ;}
 	
-	cout<<finda(p,Q)<<endl;
+	cout<<"-------------"	<<endl;
+	string q1;
+	cin>>q1;
+	cout<<fia(q,q1)<<endl;
 	return 0;
 }
