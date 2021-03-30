@@ -6,7 +6,7 @@ using namespace std;
 
 int main(void)
 {
-	regex r("[[:alnum:]]+\\.(cpp|cxx|cc)$",regex::icase);
+	regex r("^[[:alnum:]]+\\.(cpp|cxx|cc)$",regex::icase);
 	
 	smatch	results;
 	string filename;
